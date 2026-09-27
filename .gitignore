@@ -1,0 +1,53 @@
+# === macOS ===
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# === LaTeX 编译中间文件 ===
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.synctex.gz(busy)
+*.pdfsync
+*.latexmk
+
+# === 参考文献 / 索引辅助文件 ===
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*-blx.aux
+*-blx.bib
+*.brf
+*.idx
+*.ilg
+*.ind
+
+# === 中间文档 ===
+*.dvi
+*.xdv
+*-converted-to.*
+
+# === beamer 等宏包辅助文件 ===
+*.nav
+*.snm
+*.vrb
+*.th
+
+# === 编辑器 ===
+.vscode/
+.idea/
+*.swp
+
+# === 编译产物（可再生）===
+paper/main.pdf

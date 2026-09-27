@@ -1,0 +1,172 @@
+% !TeX program = pdflatex
+% !TeX encoding = UTF-8
+% !BIB program = bibtex
+% !TeX root = main.tex
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subfig}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+
+\title{Integrated Sensing and Communication for Multi-UAV Systems:
+A Placeholder Title\\
+% Sub-title should not be used for IEEE Xplore
+\thanks{Identify applicable funding agency here. If none, delete this.}
+}
+
+\author{\IEEEauthorblockN{Dankao Chen}
+\IEEEauthorblockA{\textit{Department of ...} \\
+\textit{University of ...}\\
+City, Country \\
+email@example.com}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{Department of ...} \\
+\textit{University of ...}\\
+City, Country \\
+email@example.com}
+}
+
+\maketitle
+
+\begin{abstract}
+This work investigates integrated sensing and communication (ISAC) in
+multi-UAV (MUAV) systems. Replace this placeholder abstract with a concise
+summary of the problem, the proposed approach, and the key results. Do not
+use symbols, special characters, footnotes, or math in the abstract.
+\end{abstract}
+
+\begin{IEEEkeywords}
+integrated sensing and communication (ISAC), multi-UAV systems, beamforming,
+resource allocation.
+\end{IEEEkeywords}
+
+\section{Introduction}
+Background and motivation of ISAC in multi-UAV systems. State the
+contributions of this work, typically as a bullet list:
+\begin{itemize}
+\item We formulate the MUAV-assisted ISAC problem as ...
+\item We propose a ... algorithm to ...
+\item Simulation results demonstrate that ...
+\end{itemize}
+
+\subsection{Related Work}
+Review prior work on ISAC, UAV communications, and multi-UAV cooperation,
+and position this paper against existing contributions~\cite{ref_isac_survey,
+ref_uav_com}.
+
+\subsection{Contributions and Organization}
+Summarize the contributions and outline the remainder of the paper.
+Section~\ref{sec:system} describes the system model.
+Section~\ref{sec:method} presents the proposed method.
+Section~\ref{sec:simulation} reports simulation results, and
+Section~\ref{sec:conclusion} concludes the paper.
+
+\section{System Model}\label{sec:system}
+
+\subsection{Network Topology}
+Describe the scenario: UAV positions, users/targets, channels.
+Fig.~\ref{fig:scenario} illustrates the considered system.
+
+\begin{figure}[!t]
+\centering
+% \includegraphics[width=\linewidth]{scenario.pdf}
+\framebox[0.9\linewidth]{\rule{0pt}{2.5cm} placeholder}
+\caption{Illustration of the MUAV-assisted ISAC scenario.}
+\label{fig:scenario}
+\end{figure}
+
+\subsection{Communication Model}
+Define the communication channels and rate expressions, e.g.,
+\begin{equation}\label{eq:rate}
+R_{k} = \log_{2}\!\left(1 + \frac{\left|\mathbf{h}_{k}^{H}\mathbf{w}_{k}\right|^{2}}
+{\sum_{j\neq k}\left|\mathbf{h}_{k}^{H}\mathbf{w}_{j}\right|^{2} + \sigma^{2}}\right).
+\end{equation}
+
+\subsection{Sensing Model}
+Define the sensing (e.g., radar) model, beampattern gain, and CRB, e.g.,
+\begin{equation}\label{eq:beampattern}
+G(\theta) = \mathbf{a}^{H}(\theta)\,\mathbf{R}_{x}\,\mathbf{a}(\theta),
+\end{equation}
+where $\mathbf{a}(\theta)$ denotes the steering vector and
+$\mathbf{R}_{x}$ the transmit covariance matrix.
+
+\section{Problem Formulation}
+State the optimization problem, e.g.,
+\begin{subequations}\label{opt:main}
+\begin{align}
+\max_{\{\mathbf{w}_{k}\}} \quad & \sum_{k} R_{k} \label{opt:obj}\\
+\text{s.t.}\quad
+& \mathrm{tr}(\mathbf{R}_{x}) \le P_{\max}, \label{opt:power}\\
+& \mathrm{CRB}(\theta) \le \Gamma, \label{opt:crb}\\
+& \|\mathbf{q}_{m} - \mathbf{q}_{m'}\|^{2} \ge d_{\min}^{2},
+\quad \forall m \neq m'. \label{opt:collision}
+\end{align}
+\end{subequations}
+
+\section{Proposed Method}\label{sec:method}
+Describe the approach to solve problem~\eqref{opt:main}. An overall
+algorithm is summarized in Algorithm~\ref{alg:proposed}.
+
+\begin{algorithm}[!t]
+\caption{Proposed Algorithm for MUAV-ISAC}
+\label{alg:proposed}
+\begin{algorithmic}[1]
+\STATE Initialize UAV positions $\{\mathbf{q}_{m}^{(0)}\}$ and beams
+\REPEAT
+\STATE Update beamforming vectors by solving~\eqref{opt:main} with fixed UAV positions
+\STATE Update UAV trajectories based on the obtained beams
+\UNTIL convergence in objective~\eqref{opt:obj}
+\STATE \textbf{return} optimized beams and trajectories
+\end{algorithmic}
+\end{algorithm}
+
+\section{Simulation Results}\label{sec:simulation}
+
+\subsection{Simulation Setup}
+Describe parameters: carrier frequency, UAV altitude, noise power, path-loss
+model, and benchmarks.
+
+\subsection{Numerical Results}
+Present the results. Table~\ref{tab:comparison} gives an example of a
+three-point IEEE-style table.
+
+\begin{table}[!t]
+\caption{An Example Table}
+\label{tab:comparison}
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Scheme & Metric 1 & Metric 2 & Metric 3\\
+\midrule
+Benchmark A & -- & -- & --\\
+Benchmark B & -- & -- & --\\
+Proposed    & -- & -- & --\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Conclusion}\label{sec:conclusion}
+Conclude the paper and outline possible future work.
+
+\section*{Acknowledgment}
+The authors would like to thank...
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
