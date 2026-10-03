@@ -22,19 +22,18 @@
 
 \begin{document}
 
-\title{Integrated Sensing and Communication for Multi-UAV Systems:
-A Placeholder Title\\
+\title{Paper Title Here\\
 % Sub-title should not be used for IEEE Xplore
 \thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
-\author{\IEEEauthorblockN{Dankao Chen}
+\author{\IEEEauthorblockN{1st Given Name Surname}
 \IEEEauthorblockA{\textit{Department of ...} \\
 \textit{University of ...}\\
 City, Country \\
 email@example.com}
 \and
-\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockN{2nd Given Name Surname}
 \IEEEauthorblockA{\textit{Department of ...} \\
 \textit{University of ...}\\
 City, Country \\
@@ -44,106 +43,173 @@ email@example.com}
 \maketitle
 
 \begin{abstract}
-This work investigates integrated sensing and communication (ISAC) in
-multi-UAV (MUAV) systems. Replace this placeholder abstract with a concise
-summary of the problem, the proposed approach, and the key results. Do not
-use symbols, special characters, footnotes, or math in the abstract.
+Replace this placeholder with a concise summary of the problem, the proposed
+approach, and the key results. Do not use symbols, special characters,
+footnotes, or math in the abstract.
 \end{abstract}
 
 \begin{IEEEkeywords}
-integrated sensing and communication (ISAC), multi-UAV systems, beamforming,
-resource allocation.
+keyword one, keyword two, keyword three.
 \end{IEEEkeywords}
 
 \section{Introduction}
-Background and motivation of ISAC in multi-UAV systems. State the
-contributions of this work, typically as a bullet list:
+\IEEEPARstart{T}{his} opening paragraph provides the general background of
+the work: the application scenario, the driving trend, and why the problem
+is worth studying now. Keep it accessible to the general reader of the
+proceedings and quantify the impact with one or two illustrative figures
+of merit, then narrow down to the specific problem addressed in this
+paper.
+
+The second paragraph reviews the state of the art at a high level and
+identifies the gap. Summarize the dominant existing approaches in one or
+two sentences each, explain their common limitation, and state explicitly
+what is still missing. This motivates the contributions of this paper,
+typically summarized as a bullet list:
 \begin{itemize}
-\item We formulate the MUAV-assisted ISAC problem as ...
+\item We formulate ... as ...
 \item We propose a ... algorithm to ...
-\item Simulation results demonstrate that ...
+\item Theoretical analysis and simulation results demonstrate that ...
 \end{itemize}
 
+The closing paragraph of the introduction states the headline result in
+one or two sentences, e.g., ``the proposed scheme achieves a 20\% gain
+over the strongest baseline under typical operating conditions,'' which
+anchors the contribution list above.
+
 \subsection{Related Work}
-Review prior work on ISAC, UAV communications, and multi-UAV cooperation,
-and position this paper against existing contributions~\cite{ref_isac_survey,
-ref_uav_com}.
+Review prior work and position this paper against existing
+contributions~\cite{ref_shannon1948, ref_boyd2004}. Organize the
+literature by methodology rather than chronologically: one short paragraph
+per family of approaches, contrasting their assumptions and performance,
+and closing with the sentence that separates this work from them.
+
+A second paragraph may cover the complementary line of work
+in~\cite{ref_boyd2004} and explain why porting those tools to the present
+setting is non-trivial, e.g., new coupling constraints or a different
+information structure.
 
 \subsection{Contributions and Organization}
 Summarize the contributions and outline the remainder of the paper.
-Section~\ref{sec:system} describes the system model.
+Section~\ref{sec:model} describes the system model.
 Section~\ref{sec:method} presents the proposed method.
-Section~\ref{sec:simulation} reports simulation results, and
+Section~\ref{sec:results} reports the results, and
 Section~\ref{sec:conclusion} concludes the paper.
 
-\section{System Model}\label{sec:system}
+\section{System Model}\label{sec:model}
 
-\subsection{Network Topology}
-Describe the scenario: UAV positions, users/targets, channels.
-Fig.~\ref{fig:scenario} illustrates the considered system.
+\subsection{System Description}
+Describe the scenario, entities, and assumptions of the model, and define the
+key notation used throughout the paper.
+Fig.~\ref{fig:example} illustrates the considered system.
+
+Elaborate on the components shown in Fig.~\ref{fig:example}: what each
+entity does, over which interface it interacts, and what information is
+available to whom. State the assumptions on the channel, hardware,
+mobility, or data that the model relies on, and justify each assumption
+in one clause.
 
 \begin{figure}[!t]
 \centering
-% \includegraphics[width=\linewidth]{scenario.pdf}
-\framebox[0.9\linewidth]{\rule{0pt}{2.5cm} placeholder}
-\caption{Illustration of the MUAV-assisted ISAC scenario.}
-\label{fig:scenario}
+\includegraphics[width=\linewidth]{UNNC.png}
+\caption{Illustration of the considered system.}
+\label{fig:example}
 \end{figure}
 
-\subsection{Communication Model}
-Define the communication channels and rate expressions, e.g.,
-\begin{equation}\label{eq:rate}
-R_{k} = \log_{2}\!\left(1 + \frac{\left|\mathbf{h}_{k}^{H}\mathbf{w}_{k}\right|^{2}}
-{\sum_{j\neq k}\left|\mathbf{h}_{k}^{H}\mathbf{w}_{j}\right|^{2} + \sigma^{2}}\right).
+\subsection{Model Details}
+Define the mathematical model and the key performance metric, e.g.,
+\begin{equation}\label{eq:metric}
+y = f(\mathbf{x}) + n,
 \end{equation}
+where $\mathbf{x}$ denotes the decision variable, $n$ denotes the noise or
+uncertainty term, and $f(\cdot)$ denotes the system response.
 
-\subsection{Sensing Model}
-Define the sensing (e.g., radar) model, beampattern gain, and CRB, e.g.,
-\begin{equation}\label{eq:beampattern}
-G(\theta) = \mathbf{a}^{H}(\theta)\,\mathbf{R}_{x}\,\mathbf{a}(\theta),
-\end{equation}
-where $\mathbf{a}(\theta)$ denotes the steering vector and
-$\mathbf{R}_{x}$ the transmit covariance matrix.
+Collect the main symbols in a notation table if there are more than a
+dozen of them; otherwise define each symbol at its first appearance, as
+above. Complete the model with the operational constraints that will
+appear as $f_i(\cdot)$ and $h_j(\cdot)$ in problem~\eqref{opt:main} below.
 
 \section{Problem Formulation}
-State the optimization problem, e.g.,
+State the task to be solved (e.g., the optimization problem), e.g.,
 \begin{subequations}\label{opt:main}
 \begin{align}
-\max_{\{\mathbf{w}_{k}\}} \quad & \sum_{k} R_{k} \label{opt:obj}\\
+\min_{\mathbf{x}} \quad & f_0(\mathbf{x}) \label{opt:obj}\\
 \text{s.t.}\quad
-& \mathrm{tr}(\mathbf{R}_{x}) \le P_{\max}, \label{opt:power}\\
-& \mathrm{CRB}(\theta) \le \Gamma, \label{opt:crb}\\
-& \|\mathbf{q}_{m} - \mathbf{q}_{m'}\|^{2} \ge d_{\min}^{2},
-\quad \forall m \neq m'. \label{opt:collision}
+& f_i(\mathbf{x}) \le 0, \quad i = 1, \ldots, m, \label{opt:ineq}\\
+& h_j(\mathbf{x}) = 0, \quad j = 1, \ldots, p. \label{opt:eq}
 \end{align}
 \end{subequations}
+Explain each line of problem~\eqref{opt:main} in words: the meaning of the
+objective~\eqref{opt:obj}, the physical origin of the inequality
+constraints~\eqref{opt:ineq}, and why the equality
+constraints~\eqref{opt:eq} couple the decision variables.
+
+Discuss the challenges of problem~\eqref{opt:main} that motivate the
+proposed method: non-convexity of $f_0(\cdot)$, coupling across blocks,
+lack of global state information, or the cost of each iteration. These
+challenges should map one-to-one onto the design choices of the next
+section.
 
 \section{Proposed Method}\label{sec:method}
-Describe the approach to solve problem~\eqref{opt:main}. An overall
-algorithm is summarized in Algorithm~\ref{alg:proposed}.
+Describe the approach to solving problem~\eqref{opt:main}. The overall
+procedure is summarized in Algorithm~\ref{alg:proposed}.
+
+\subsection{Overview}
+Give the intuition first: which challenge from the previous section each
+building block addresses, and how the blocks fit together. A reader who
+stops after this subsection should still understand the main idea of the
+paper.
+
+\subsection{Iterative Update}
+Detail one iteration of Algorithm~\ref{alg:proposed}. With the other
+blocks fixed, the update of block $k$ reduces to a subproblem of the form
+\begin{equation}\label{eq:update}
+\mathbf{x}_{k}^{(t+1)} \in \arg\min_{\mathbf{x}_{k}}\;
+f_0\big(\mathbf{x}_{k}, \mathbf{x}_{-k}^{(t)}\big),
+\end{equation}
+which admits a closed-form or low-complexity solution because ...
+Repeat the argument for the remaining blocks and state the cost of one
+full iteration.
 
 \begin{algorithm}[!t]
-\caption{Proposed Algorithm for MUAV-ISAC}
+\caption{Proposed Algorithm}
 \label{alg:proposed}
 \begin{algorithmic}[1]
-\STATE Initialize UAV positions $\{\mathbf{q}_{m}^{(0)}\}$ and beams
+\STATE Initialize $\mathbf{x}^{(0)}$ and set $t = 0$
 \REPEAT
-\STATE Update beamforming vectors by solving~\eqref{opt:main} with fixed UAV positions
-\STATE Update UAV trajectories based on the obtained beams
+\STATE Update one block of $\mathbf{x}$ with the other blocks fixed
+\STATE $t \leftarrow t + 1$
 \UNTIL convergence in objective~\eqref{opt:obj}
-\STATE \textbf{return} optimized beams and trajectories
+\STATE \textbf{return} $\mathbf{x}^{(t)}$
 \end{algorithmic}
 \end{algorithm}
 
-\section{Simulation Results}\label{sec:simulation}
+\subsection{Convergence and Complexity}
+State the convergence guarantee of Algorithm~\ref{alg:proposed}, e.g., a
+monotone decrease of the objective~\eqref{opt:obj} and convergence to a
+stationary point under suitable conditions, and bound the overall
+complexity in terms of the problem dimensions and the number of
+iterations. Formal proofs are deferred to an appendix or omitted for
+brevity.
+
+\section{Simulation Results}\label{sec:results}
 
 \subsection{Simulation Setup}
-Describe parameters: carrier frequency, UAV altitude, noise power, path-loss
-model, and benchmarks.
+Describe the experimental setup: parameters, baselines, and evaluation
+metrics. Specify the simulator or dataset, the parameter ranges swept,
+the baselines chosen together with their citations, and the hardware and
+runtime environment, so that the results can be reproduced. Unless stated
+otherwise, each point is averaged over enough random seeds to keep the
+confidence intervals within the line width of the plots.
 
 \subsection{Numerical Results}
-Present the results. Table~\ref{tab:comparison} gives an example of a
-three-point IEEE-style table.
+Present the results and main findings. Table~\ref{tab:comparison} gives an
+example of a three-point IEEE-style table.
+
+Lead the reader through the comparison: which observation matters most,
+why the proposed scheme wins (linking back to the design choices in
+Section~\ref{sec:method}), and in which regime the gain shrinks or the
+assumptions break down. Finish with the take-away message of the
+evaluation.
 
 \begin{table}[!t]
 \caption{An Example Table}
@@ -153,15 +219,18 @@ three-point IEEE-style table.
 \toprule
 Scheme & Metric 1 & Metric 2 & Metric 3\\
 \midrule
-Benchmark A & -- & -- & --\\
-Benchmark B & -- & -- & --\\
+Baseline A & -- & -- & --\\
+Baseline B & -- & -- & --\\
 Proposed    & -- & -- & --\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \section{Conclusion}\label{sec:conclusion}
-Conclude the paper and outline possible future work.
+Conclude the paper by restating the problem, the proposed approach, and
+the headline numerical gain in two or three sentences. Then outline
+possible future work, e.g., extensions to ... , theoretical analysis
+of ... , and practical deployment aspects.
 
 \section*{Acknowledgment}
 The authors would like to thank...
