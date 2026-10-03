@@ -45,7 +45,9 @@
 *.th
 
 # === 编辑器 ===
-.vscode/
+# 保留 .vscode/settings.json（内含 XeLaTeX 编译配置），忽略其余编辑器文件
+.vscode/*
+!.vscode/settings.json
 .idea/
 *.swp
 

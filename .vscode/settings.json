@@ -1,0 +1,49 @@
+{
+  // ── 中文草稿版：XeLaTeX 编译，正文可直接输入中文 ──
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk (xelatex)",
+      "command": "/Library/TeX/texbin/latexmk",
+      "args": [
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-cd",
+        "%DOC%"
+      ],
+      "env": {
+        "PATH": "/Library/TeX/texbin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
+      }
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    { "name": "latexmk (xelatex)", "tools": ["latexmk (xelatex)"] }
+  ],
+  "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false
+
+  // ── 英文定稿版（pdflatex）：定稿时注释掉上面 tools / recipes 两段，
+  // ── 取消下面两段注释；同时把 paper/main.tex 里的 \usepackage[UTF8]{ctex}
+  // ── 行注释掉。命令行对应：latexmk -pdf main.tex ──
+  //
+  // "latex-workshop.latex.tools": [
+  //   {
+  //     "name": "latexmk (pdflatex)",
+  //     "command": "/Library/TeX/texbin/latexmk",
+  //     "args": [
+  //       "-pdf",
+  //       "-synctex=1",
+  //       "-interaction=nonstopmode",
+  //       "-file-line-error",
+  //       "-cd",
+  //       "%DOC%"
+  //     ],
+  //     "env": {
+  //       "PATH": "/Library/TeX/texbin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
+  //     }
+  //   }
+  // ],
+  // "latex-workshop.latex.recipes": [
+  //   { "name": "latexmk (pdflatex)", "tools": ["latexmk (pdflatex)"] }
+  // ]
+}
